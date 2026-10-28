@@ -28,6 +28,7 @@
 </head>
 
 <body>
+  <!-- Header Section -->
   <header>
     <div class="navbar bg-base-100 shadow-sm">
       <div class="navbar-start">
@@ -38,7 +39,8 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
             </svg>
           </div>
-          <ul tabindex="-1" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow gap-2">
+          <ul tabindex="-1"
+            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow gap-2">
             <a href="#"><i class="fa-solid fa-circle-question"></i>FAQ</a>
             <a href="#"><i class="fa-solid fa-book-open"></i>Learn</a>
             <a href="#"><i class="fa-solid fa-right-from-bracket"></i>LogOut</a>
@@ -58,6 +60,23 @@
       </div>
     </div>
   </header>
+
+  <!-- Banner Section -->
+  <section class="flex items-center gap-20 w-11/12 mx-auto py-5">
+    <div class="flex-1">
+      <span class="text-4xl font-bold text-sky-400">English</span><span class="text-4xl font-bold"> is Easy!!</span>
+      <p class="my-5">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা আপনার দক্ষতা বাড়াতে চান, আমাদের
+        Interactive Lessons আপনাকে নিয়ে যাবে অন্য একটি Level এ</p>
+      <div class="flex flex-col gap-2 w-1/2">
+        <input class="p-2 border-gray-300 rounded-xl" type="text" placeholder="Enter Your Name">
+        <input class="p-2 border-gray-300 rounded-xl" type="password" name="" id="" placeholder="password">
+        <button class="btn btn-primary w-30 rounded-xl">Get Started</button>
+      </div>
+    </div>
+    <div class="flex-1">
+      <img src="./assets/hero-student.png" alt="">
+    </div>
+  </section>
 </body>
 
 </html>
