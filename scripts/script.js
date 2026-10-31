@@ -13,13 +13,18 @@ const removeClass = (lessionBtn) => {
   });
 };
 
+const createElement = (arr) => {
+  const htmlElement = arr.map((el) => `<span class="btn">${el}</span>`);
+  return htmlElement.join(" ");
+};
+
 const loadWordDetails = async (id) => {
   const url = `https://openapi.programming-hero.com/api/word/${id}`;
   const res = await fetch(url);
   const details = await res.json();
   showWordDetais(details.data);
   document.getElementById("my_modal_5").showModal();
-}
+};
 const showWordDetais = (word) => {
   const detailsBox = document.getElementById("details-conatainer");
   detailsBox.innerHTML = `
@@ -36,14 +41,27 @@ const showWordDetais = (word) => {
   </div>
   <div>
     <h2 class="font-bangla font-bold">সমার্থক শব্দ গুলো</h2>
-    <p class="btn">word</p>
-    <p class="btn">word</p>
-    <p class="btn">word</p>
+    <div>${createElement(word.synonyms)}</div>
   </div>
-  `
-}
+  `;
+};
+
+const manageSpin = (status) => {
+  if (status == true) {
+    document.getElementById("spiner").classList.remove("hidden");
+    console.log(document.getElementById("spiner"));
+    document.getElementById("word-container").classList.add("hidden");
+    console.log(document.getElementById("word-container"));
+  } else {
+    document.getElementById("word-container").classList.remove("hidden");
+    console.log(document.getElementById("word-container"));
+    document.getElementById("spiner").classList.add("hidden");
+    console.log(document.getElementById("spiner"));
+  }
+};
 
 const loadLessionWord = (id) => {
+  manageSpin(true);
   const url = `https://openapi.programming-hero.com/api/level/${id}`;
   fetch(url)
     .then((response) => response.json())
@@ -56,7 +74,6 @@ const loadLessionWord = (id) => {
     });
 };
 
-
 const displayLessionWord = (words) => {
   const wordContainer = document.getElementById("word-container");
   wordContainer.innerHTML = "";
@@ -68,6 +85,7 @@ const displayLessionWord = (words) => {
       <h2 class="font-bangla text-4xl font-bold">নেক্সট Lesson এ যান</h2>
     </div>
     `;
+    manageSpin(false);
     return;
   }
 
@@ -79,14 +97,15 @@ const displayLessionWord = (words) => {
         <p class="font-semibold">${word.pronunciation ? word.pronunciation : "শব্দ পাওয়া যায়নি।"}</p>
         <div class="font-bangla font-semibold text-2xl">"${word.meaning ? word.meaning : "শব্দ পাওয়া যায়নি।"}"</div>
         <div class="flex justify-between items-center">
-          <button onclick="loadWordDetails(${word.id})"><i class="fa-solid fa-circle-info"></i></button>
-          <button><i class="fa-solid fa-volume"></i></i></button>
+          <button onclick="loadWordDetails(${word.id})"><i class="info-btn fa-solid fa-circle-info"></i></button>
+          <button><i class="volume-btn fa-solid fa-volume"></i></i></button>
           
         </div>
       </div>
     `;
     wordContainer.append(wordDiv);
   });
+  manageSpin(false);
 };
 
 const displayLession = (lession) => {

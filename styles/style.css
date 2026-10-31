@@ -5,7 +5,12 @@
 .font-bangla {
     font-family: "Hind Siliguri", sans-serif;
 }
+
 .active {
     background-color: blue;
     color: white;
+}
+
+.info-btn:hover, .volume-btn {
+    cursor: pointer;
 }
