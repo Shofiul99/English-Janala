@@ -62,12 +62,13 @@
   </header>
 
   <!-- Banner Section -->
-  <section class="flex items-center gap-20 w-11/12 mx-auto py-5">
-    <div class="flex-1">
-      <span class="text-4xl font-bold text-sky-400">English</span><span class="text-4xl font-bold"> is Easy!!</span>
-      <p class="my-5">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা আপনার দক্ষতা বাড়াতে চান, আমাদের
+  <section class="flex flex-col-reverse md:flex-row items-center gap-20 w-11/12 mx-auto py-5">
+    <div class="flex-1 text-center md:text-left">
+      <h2 class="text-4xl font-bold"><span class="text-sky-400">English</span><span> is Easy!!</span></h2>
+      <p class="my-5 font-bangla">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা আপনার দক্ষতা বাড়াতে
+        চান, আমাদের
         Interactive Lessons আপনাকে নিয়ে যাবে অন্য একটি Level এ</p>
-      <div class="flex flex-col gap-2 w-1/2">
+      <div class="flex flex-col gap-2 md:w-1/2">
         <input class="p-2 border-gray-300 rounded-xl" type="text" placeholder="Enter Your Name">
         <input class="p-2 border-gray-300 rounded-xl" type="password" name="" id="" placeholder="password">
         <button class="btn btn-primary w-30 rounded-xl">Get Started</button>
@@ -77,6 +78,44 @@
       <img src="./assets/hero-student.png" alt="">
     </div>
   </section>
+
+  <!-- Lession Sections -->
+  <section>
+    <h2 class="text-4xl font-bold text-center py-5"><span class="text-sky-400">Let's</span><span>
+        LearnVocabularies</span></h2>
+    <div id="level-container" class="flex flex-wrap justify-center gap-5 py-5">
+      <button href="#" class="btn btn-outline btn-primary"><i class="fa-solid fa-book-open"></i>Lession</button>
+    </div>
+  </section>
+
+  <!-- Ward Section -->
+  <section>
+    <div id="word-container" class="w-11/12 bg-gray-100 p-10 mx-auto my-10 grid grid-cols-3 gap-5 text-center">
+      <div class="col-span-full space-y-5">
+        <img src="./assets/alert-error.png" class="mx-auto">
+        <p class="font-bangla text-xl font-semibold">আপনি এখনো কোন Lesson Select করেন ন</p>
+        <h2 class="font-bangla text-4xl font-bold">একটি Lesson Select করুন।</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Open the modal using ID.showModal() method -->
+<!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <div id="details-conatainer" class="space-y-5">
+      
+    </div>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
+  <script src="scripts/script.js"></script>
 </body>
 
 </html>
