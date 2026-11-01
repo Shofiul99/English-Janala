@@ -49,14 +49,10 @@ const showWordDetais = (word) => {
 const manageSpin = (status) => {
   if (status == true) {
     document.getElementById("spiner").classList.remove("hidden");
-    console.log(document.getElementById("spiner"));
     document.getElementById("word-container").classList.add("hidden");
-    console.log(document.getElementById("word-container"));
   } else {
     document.getElementById("word-container").classList.remove("hidden");
-    console.log(document.getElementById("word-container"));
     document.getElementById("spiner").classList.add("hidden");
-    console.log(document.getElementById("spiner"));
   }
 };
 
@@ -122,4 +118,26 @@ const displayLession = (lession) => {
     levelContainer.append(btnDiv);
   }
 };
+
+document.getElementById("btn-search").addEventListener("click", () => {
+  removeClass();
+  manageSpin(true);
+  fetch("https://openapi.programming-hero.com/api/words/all")
+    .then((res) => res.json())
+    .then((data) => {
+      const searchValue = document
+        .getElementById("input-search")
+        .value.toLowerCase()
+        .trim();
+      const allWord = data.data;
+      console.log(searchValue);
+      const filterVal = allWord.filter((word) => {
+        return word.word.toLowerCase().includes(searchValue);
+      });
+      console.log(filterVal);
+      displayLessionWord(filterVal);
+    });
+    manageSpin(flase);
+});
+
 loadLession();
