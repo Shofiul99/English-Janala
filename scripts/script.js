@@ -1,3 +1,9 @@
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+}
+
 const loadLession = () => {
   fetch("https://openapi.programming-hero.com/api/levels/all")
     .then((res) => res.json())
@@ -29,17 +35,17 @@ const showWordDetais = (word) => {
   const detailsBox = document.getElementById("details-conatainer");
   detailsBox.innerHTML = `
   <div>
-    <h1 class="text-2xl">${word.word} (<i class="fa-solid fa-microphone-lines"></i> :${word.pronunciation})</h1>
+    <h1 class="text-2xl">${word.word} (<i onclick="pronounceWord('${word.word}')" class="mic-icon fa-solid fa-microphone-lines"></i> :${word.pronunciation})</h1>
   </div>
   <div>
     <h2 class="font-bold">Meaning</h2>
     <p class="font-bangla">${word.meaning}</p>
-  </div>
+   </div>
   <div>
     <h2 class="font-bold">Example</h2>
     <p>${word.sentence}</p>
   </div>
-  <div>
+    <div>
     <h2 class="font-bangla font-bold">সমার্থক শব্দ গুলো</h2>
     <div>${createElement(word.synonyms)}</div>
   </div>
@@ -94,7 +100,7 @@ const displayLessionWord = (words) => {
         <div class="font-bangla font-semibold text-2xl">"${word.meaning ? word.meaning : "শব্দ পাওয়া যায়নি।"}"</div>
         <div class="flex justify-between items-center">
           <button onclick="loadWordDetails(${word.id})"><i class="info-btn fa-solid fa-circle-info"></i></button>
-          <button><i class="volume-btn fa-solid fa-volume"></i></i></button>
+          <button><i onclick="pronounceWord('${word.word}')" class="volume-btn fa-solid fa-volume"></i></i></button>
           
         </div>
       </div>
@@ -132,7 +138,7 @@ document.getElementById("btn-search").addEventListener("click", () => {
       const allWord = data.data;
       console.log(searchValue);
       const filterVal = allWord.filter((word) =>
-        word.word.toLowerCase().includes(searchValue)
+        word.word.toLowerCase().includes(searchValue),
       );
       console.log(filterVal);
       displayLessionWord(filterVal);

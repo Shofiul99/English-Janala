@@ -11,6 +11,8 @@
     color: white;
 }
 
-.info-btn:hover, .volume-btn {
+.info-btn:hover,
+.volume-btn,
+.mic-icon {
     cursor: pointer;
 }
