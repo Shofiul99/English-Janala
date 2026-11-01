@@ -131,13 +131,13 @@ document.getElementById("btn-search").addEventListener("click", () => {
         .trim();
       const allWord = data.data;
       console.log(searchValue);
-      const filterVal = allWord.filter((word) => {
-        return word.word.toLowerCase().includes(searchValue);
-      });
+      const filterVal = allWord.filter((word) =>
+        word.word.toLowerCase().includes(searchValue)
+      );
       console.log(filterVal);
       displayLessionWord(filterVal);
     });
-    manageSpin(flase);
+  manageSpin(flase);
 });
 
 loadLession();
